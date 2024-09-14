@@ -1,22 +1,9 @@
-import React from "react";
+import React from 'react';
+import Header from './Header';
+import Hero from './Hero';
+import Footer from './Footer';
 
 function MainComponent() {
-  const [twitterUrl, setTwitterUrl] = React.useState("");
-
-  React.useEffect(() => {
-    fetch("/api/twitter-profile-shortcut", {
-      method: "POST",
-      body: JSON.stringify({ username: "KaiArt4" }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.twitterProfileUrl) {
-          setTwitterUrl(data.twitterProfileUrl);
-        }
-      })
-      .catch((error) => console.error("Error fetching Twitter URL:", error));
-  }, []);
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -26,84 +13,8 @@ function MainComponent() {
 
   return (
     <div className="min-h-screen bg-gray-50 font-inter">
-      <header className="bg-white shadow-md sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-[#2563EB]">波音カフェ</h1>
-          <nav className="hidden md:block">
-            <ul className="flex space-x-4">
-              <li>
-                <a
-                  href="#about"
-                  onClick={() => scrollToSection("about")}
-                  className="text-gray-600 hover:text-[#2563EB] hover:bg-[#F1F5F9] px-3 py-2 rounded transition duration-300"
-                >
-                  概要
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#menu"
-                  onClick={() => scrollToSection("menu")}
-                  className="text-gray-600 hover:text-[#2563EB] hover:bg-[#F1F5F9] px-3 py-2 rounded transition duration-300"
-                >
-                  メニュー
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#gallery"
-                  onClick={() => scrollToSection("gallery")}
-                  className="text-gray-600 hover:text-[#2563EB] hover:bg-[#F1F5F9] px-3 py-2 rounded transition duration-300"
-                >
-                  ギャラリー
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#testimonials"
-                  onClick={() => scrollToSection("testimonials")}
-                  className="text-gray-600 hover:text-[#2563EB] hover:bg-[#F1F5F9] px-3 py-2 rounded transition duration-300"
-                >
-                  お客様の声
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  onClick={() => scrollToSection("contact")}
-                  className="text-gray-600 hover:text-[#2563EB] hover:bg-[#F1F5F9] px-3 py-2 rounded transition duration-300"
-                >
-                  コンタクト
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <button className="md:hidden text-[#2563EB]">
-            <i className="fas fa-bars text-2xl"></i>
-          </button>
-        </div>
-      </header>
-      <section
-        className="relative h-screen bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://ucarecdn.com/667af395-2327-4457-a3e5-7fa7a1839f92/-/format/auto/')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center text-white">
-            <h2 className="text-5xl font-bold mb-4 animate-fade-in">
-              波音カフェへようこそ
-            </h2>
-            <button
-              onClick={() => scrollToSection("menu")}
-              className="bg-[#2563EB] text-white font-bold py-6 px-12 rounded-lg text-2xl hover:bg-[#1d4ed8] transition duration-300"
-            >
-              メニューを見る
-            </button>
-          </div>
-        </div>
-      </section>
+      <Header scrollToSection={scrollToSection} />
+      <Hero scrollToSection={scrollToSection} />
       <section id="about" className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
@@ -303,41 +214,7 @@ function MainComponent() {
           </div>
         </div>
       </section>
-      <footer className="bg-[#2563EB] text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">波音カフェ</h3>
-              <p>〒123-4567</p>
-              <p>○○県△△市海岸通り1-2-3</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">営業時間</h3>
-              <p>月〜金: 7:00 - 21:00</p>
-              <p>土日祝: 6:00 - 22:00</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">フォローする</h3>
-              <div className="flex space-x-4">
-                <a href="#" className="hover:text-blue-200">
-                  <i className="fab fa-instagram text-2xl"></i>
-                </a>
-                <a href="#" className="hover:text-blue-200">
-                  <i className="fab fa-facebook text-2xl"></i>
-                </a>
-                <a href={twitterUrl} className="hover:text-blue-200">
-                  <i className="fab fa-twitter text-2xl"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 border-t border-blue-400 pt-8">
-            <p className="text-center text-sm">
-              &copy; 2024 波音カフェ. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
       <style jsx global>{`
         @keyframes fade-in {
           from { opacity: 0; }
