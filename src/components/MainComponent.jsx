@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Hero from './Hero';
+import Features from './Features';
 import Footer from './Footer';
 
 function MainComponent() {
@@ -15,42 +16,7 @@ function MainComponent() {
     <div className="min-h-screen bg-gray-50 font-inter">
       <Header scrollToSection={scrollToSection} />
       <Hero scrollToSection={scrollToSection} />
-      <section id="about" className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            波音カフェの特徴
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-[#DBEAFE] rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-map-pin text-[#2563EB] text-3xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">絶景のロケーション</h3>
-              <p className="text-gray-600">
-                美しい海を一望できる最高のロケーションで、心地よい時間をお過ごしいただけます。
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-[#DBEAFE] rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-clock text-[#2563EB] text-3xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">朝日から夕日まで</h3>
-              <p className="text-gray-600">
-                早朝から夕方まで営業しているので、一日中海の景色を楽しみながらお過ごしいただけます。
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-[#DBEAFE] rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-phone text-[#2563EB] text-3xl"></i>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">簡単予約システム</h3>
-              <p className="text-gray-600">
-                オンライン予約システムで、簡単に席の確保ができます。特別な日のご予約もお待ちしております。
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Features />
       <section id="menu" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">人気メニュー</h2>
